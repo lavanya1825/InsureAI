@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Claims</title>
+</head>
+<body style="background:#0b0f1a;color:white;text-align:center;padding:40px;">
+
+<h2>My Claims</h2>
+
+<table border="1" align="center" cellpadding="10">
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for claim in claims %}
+<tr>
+<td>{{ claim[0] }}</td>
+<td>{{ claim[1] }}</td>
+<td>₹{{ claim[2] }}</td>
+<td>{{ claim[3] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

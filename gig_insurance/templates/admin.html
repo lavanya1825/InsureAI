@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+
+<body style="background:#0b0f1a;color:white;text-align:center;padding:40px;">
+
+<h2>Admin Panel - Manage Claims</h2>
+
+<table border="1" align="center" cellpadding="10">
+<tr>
+<th>User</th>
+<th>Type</th>
+<th>Description</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for claim in claims %}
+<tr>
+<td>{{ claim[1] }}</td>
+<td>{{ claim[2] }}</td>
+<td>{{ claim[3] }}</td>
+<td>₹{{ claim[4] }}</td>
+<td>{{ claim[5] }}</td>
+<td>
+    <a href="{{ url_for('update_claim', claim_id=claim[0], new_status='Approved') }}">
+        Approve
+    </a> |
+    <a href="{{ url_for('update_claim', claim_id=claim[0], new_status='Rejected') }}">
+        Reject
+    </a>
+    {% if session.role == "admin" %}
+<a href="{{ url_for('admin') }}" class="btn">Admin Panel</a>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
